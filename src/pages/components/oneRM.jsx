@@ -3,6 +3,7 @@ import { Bar } from "react-chartjs-2";
 import * as math from "mathjs";
 import NavBar from "./NavBar";
 import { useState } from "react";
+import Footer from "./Footer";
 import {
   Chart,
   CategoryScale,
@@ -48,22 +49,32 @@ export default function OneRM() {
 
   // Calcula el 1RM usando diferentes fórmulas y actualiza los resultados en el estado
   const handleCalculate = () => {
-  
     setResultFormulas({
-      epley: math.round(Number(weight) * (1 + 0.0333 * Number(repetitionsDone)), 2),
-      brzycki: math.round(Number(weight) / (1.0278 - 0.0278 * Number(repetitionsDone)), 2),
-      mcglothin: math.round(Number(weight) * Math.pow(repetitionsDone, 0.10), 2),
-      lombardi: math.round(Number(weight) * Math.pow(repetitionsDone, 0.10), 2),
-      mayhew: math.round(Number(weight) / (1.013 - 0.0267123 * Number(repetitionsDone)), 2),
-      oconner: math.round(0.025 * (Number(weight) * Number(repetitionsDone)) + Number(weight), 2),
+      epley: math.round(
+        Number(weight) * (1 + 0.0333 * Number(repetitionsDone)),
+        2
+      ),
+      brzycki: math.round(
+        Number(weight) / (1.0278 - 0.0278 * Number(repetitionsDone)),
+        2
+      ),
+      mcglothin: math.round(Number(weight) * Math.pow(repetitionsDone, 0.1), 2),
+      lombardi: math.round(Number(weight) * Math.pow(repetitionsDone, 0.1), 2),
+      mayhew: math.round(
+        Number(weight) / (1.013 - 0.0267123 * Number(repetitionsDone)),
+        2
+      ),
+      oconner: math.round(
+        0.025 * (Number(weight) * Number(repetitionsDone)) + Number(weight),
+        2
+      ),
       wathan: math.round(
-        (100 * Number(weight)) / (48.8 + 53.8 * Math.exp(-0.075 * repetitionsDone)),
+        (100 * Number(weight)) /
+          (48.8 + 53.8 * Math.exp(-0.075 * repetitionsDone)),
         2
       ),
     });
   };
-  
-  
 
   // Datos del gráfico de barras
   const data = {
@@ -77,44 +88,45 @@ export default function OneRM() {
       "Mayhew",
     ].map((label) => `${label} (${repetitionsDone} reps)`),
     datasets: [
-        {
-          label: "Peso máximo",
-          data: [
-            resultFormulas.brzycki,
-            resultFormulas.oconner,
-            resultFormulas.lombardi,
-            resultFormulas.wathan,
-            resultFormulas.mcglothin,
-            resultFormulas.epley,
-            resultFormulas.mayhew,
-          ],
-          backgroundColor: [
-            "#FF6384",
-            "#36A2EB",
-            "#FFCE56",
-            "#BCAAA4",
-            "#9FA8DA",
-            "#A5D6A7",
-            "#90CAF9",
-          ],
-          borderWidth: 1,
-        },
-      ],
-    };
-  
-    // Maneja la presentación del formulario
-    const handleSubmit = (event) => {
-      event.preventDefault();
-      if (weight === "" || repetitionsDone === "") {
-        alert("Por favor ingrese el peso y las repeticiones realizadas");
-        return;
-      }
-      handleCalculate();
-    };
-  
-    return (
-      <div>
-        <NavBar />
+      {
+        label: "Peso máximo",
+        data: [
+          resultFormulas.brzycki,
+          resultFormulas.oconner,
+          resultFormulas.lombardi,
+          resultFormulas.wathan,
+          resultFormulas.mcglothin,
+          resultFormulas.epley,
+          resultFormulas.mayhew,
+        ],
+        backgroundColor: [
+          "#FF6384",
+          "#36A2EB",
+          "#FFCE56",
+          "#BCAAA4",
+          "#9FA8DA",
+          "#A5D6A7",
+          "#90CAF9",
+        ],
+        borderWidth: 1,
+      },
+    ],
+  };
+
+  // Maneja la presentación del formulario
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (weight === "" || repetitionsDone === "") {
+      alert("Por favor ingrese el peso y las repeticiones realizadas");
+      return;
+    }
+    handleCalculate();
+  };
+
+  return (
+    <div>
+      <NavBar />
+      <div className=" p-10 m-4">
         <h1>Calculadora de 1RM</h1>
         <form onSubmit={handleSubmit}>
           <label>
@@ -160,6 +172,7 @@ export default function OneRM() {
           )}
         </div>
       </div>
-    );
-  }
-  
+      <Footer/>
+    </div>
+  );
+}

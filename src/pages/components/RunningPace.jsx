@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import NavBar from './NavBar';
+import Footer from './Footer';
 
 export default function PaceCalculator() {
-  const [distance, setDistance] = useState("");
+  const [distance, setDistance] = useState("0");
   const [distanceUnit, setDistanceUnit] = useState("kilometers");
-  const [hours, setHours] = useState("");
-  const [minutes, setMinutes] = useState("");
-  const [seconds, setSeconds] = useState("");
+  const [hours, setHours] = useState("0");
+  const [minutes, setMinutes] = useState("0");
+  const [seconds, setSeconds] = useState("0");
   const [pace, setPace] = useState("");
   const [speedKMH, setSpeedKMH] = useState("");
   const [speedMPH, setSpeedMPH] = useState("");
@@ -14,7 +15,7 @@ export default function PaceCalculator() {
   const calculatePace = (event) => {
     event.preventDefault();
 
-    if (distance === "" || hours === "" || minutes === "" || seconds === "") {
+    if (distance === "0" || hours === "" || minutes === "" || seconds === "") {
       alert("Por favor ingrese la distancia y el tiempo");
       return;
     }
@@ -62,11 +63,12 @@ export default function PaceCalculator() {
   return (
     <div>
         <NavBar />
+        <div>
       <h1>Calculadora de ritmo de carrera</h1>
       <form onSubmit={calculatePace}>
         <label>
           Distancia:
-          <input type="number" min="0" name="distance" value={distance} onChange={handleInputChange} />
+          <input type="float" min="0" name="distance" value={distance} onChange={handleInputChange} />
           <select name="distanceUnit" value={distanceUnit} onChange={handleInputChange}>
             <option value="kilometers">Kilómetros</option>
             <option value="miles">Millas</option>
@@ -96,6 +98,8 @@ export default function PaceCalculator() {
           <p>Tu velocidad es: {speedKMH} KM/H ({speedMPH} Millas/H)</p>
         </div>
       )}
+      </div>
+      <Footer/>
     </div>
   );
 }
