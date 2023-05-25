@@ -174,7 +174,7 @@ export default function OneRM() {
                 <li>McGlothin: {resultFormulas.mcglothin}</li>
                 <li>Lombardi: {resultFormulas.lombardi}</li>
                 <li>Mayhew: {resultFormulas.mayhew}</li>
-                <li>O'Conner: {resultFormulas.oconner}</li>
+                <li>OConner: {resultFormulas.oconner}</li>
                 <li>Wathan: {resultFormulas.wathan}</li>
               </ul>
               <h2 className=" pt-2 text-center items-center justify-center text-4xl font-semibold ">Gráfico de barras</h2>
