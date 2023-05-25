@@ -14,13 +14,24 @@ export default function PaceCalculator() {
     speedMPH: "",
   });
 
+  const savingTime = () => {
+    if (hours === "") {
+      setHours(0);
+    }
+  };
+
   const calculatePace = (event) => {
     event.preventDefault();
 
     if (distance === "" || hours === "" || minutes === "" || seconds === "") {
+      savingTime();
       alert("Por favor ingrese la distancia y el tiempo");
+
       return;
     }
+
+
+
 
     const distanceInKilometers =
       distanceUnit === "kilometers" ? parseFloat(distance) : parseFloat(distance) * 1.60934;
@@ -111,6 +122,7 @@ export default function PaceCalculator() {
                   max="23"
                   name="hours"
                   placeholder="Horas"
+                  defaultValue="0"
                   value={hours}
                   onChange={handleInputChange}
                 />
@@ -172,6 +184,7 @@ export default function PaceCalculator() {
               Poder determinar qué ritmo deberías llevar para completar cierta
               distancia en un tiempo determinado
             </li>
+            <li>Al no poner alguna cantidad en algun campo se entienda como 0 y no como vacio</li>
           </ul>
         </div>
       </div>
