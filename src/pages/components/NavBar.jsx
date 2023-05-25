@@ -3,10 +3,10 @@ import { SlPaypal } from "react-icons/sl"
 
 export default function NavBar() {
   return (
-    <div className=" p-4 flex justify-center bg-black text-white">
+    <div className="p-4 flex justify-center bg-black text-white">
       <nav>
         <div>
-          <ul className="flex justify-between items-center space-x-6">
+          <ul className="flex flex-col sm:flex-row justify-center items-center space-y-2 sm:space-y-0 sm:space-x-6">
             <li>
               <Link href="/">
                 <p className="text-2xl font-semibold hover:text-blue-500 inline-flex items-center border-b-2 border-b-white hover:border-b-blue-500">Inicio</p>
