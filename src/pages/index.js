@@ -47,7 +47,7 @@ export default function Index() {
               <li>Posibilidad de conectarse a una app movil</li>
               <li>Formulario de contacto para peticiones</li>
               <li>Dar tambien un calculo de que peso utilizar con cuantas repeticiones a partir del 1RM</li>
-              <li>Posibilidad de guardar los calculos</li>
+              <li>Cambiar icono de pagina</li>
               <li>Centrar mejor esta seccion de cambios futuros😔</li>
             </ul>
         </div>
