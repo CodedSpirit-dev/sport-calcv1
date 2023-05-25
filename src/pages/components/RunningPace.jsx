@@ -15,8 +15,10 @@ export default function PaceCalculator() {
   });
 
   const savingTime = () => {
-    if (hours === "") {
-      setHours(0);
+    if (hours === "", minutes === "", seconds === "") {
+      setHours("00");
+      setMinutes("00");
+      setSeconds("00");
     }
   };
 
