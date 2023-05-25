@@ -1,11 +1,19 @@
 import Head from "next/head";
 import Link from "next/link";
-import { SlPaypal } from "react-icons/sl"
+import { SlPaypal } from "react-icons/sl";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
+import { useRouter } from 'next/router';
 
 export default function Index() {
+  const router = useRouter();
+
+  const handleDonationClick = () => {
+    router.push("https://www.paypal.com/donate/?hosted_button_id=DRK97T3PRBGK8");
+  };
+
   return (
+    <div>
     <div className="flex flex-col items-center justify-center min-h-screen px-2 sm:px-4 md:px-8 lg:px-16">
       <Head>
         <title>Calculadoras deportivas</title>
@@ -39,7 +47,7 @@ export default function Index() {
               </Link>
             </li>
           </ul>
-          <div className=" w-full sm:w-8/12 m-20 block p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+          <div className="w-full sm:w-8/12 m-20 block p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
             <h5 className="text-center mb-2 text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-gray-900 dark:text-white">
               Cambios futuros
             </h5>
@@ -50,13 +58,19 @@ export default function Index() {
               <li>Cambiar icono de pagina</li>
               <li>Centrar mejor esta seccion de cambios futuros😔</li>
             </ul>
+          </div>
         </div>
-        </div>
+        <button 
+          type="button" 
+          className="text-gray-900 bg-[#F7BE38] hover:bg-[#F7BE38]/90 focus:ring-4 focus:outline-none focus:ring-[#F7BE38]/50 font-medium rounded-lg text-xl sm:text-2xl px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#F7BE38]/50 mr-2 mb-2"
+          onClick={handleDonationClick}
+        >
+          Donaciones <SlPaypal className="ml-2" size="24px"/>
+        </button>
       </main>
-      <button type="button" class="text-gray-900 bg-[#F7BE38] hover:bg-[#F7BE38]/90 focus:ring-4 focus:outline-none focus:ring-[#F7BE38]/50 font-medium rounded-lg text-xl sm:text-2xl px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#F7BE38]/50 mr-2 mb-2">
-  Donaciones <SlPaypal className="ml-2" size="1.5em sm:size-2em"/>
-</button>
-      <Footer/>
+
+    </div>
+    <Footer/>
     </div>
   );
 }
