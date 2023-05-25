@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { SlPaypal } from "react-icons/sl"
+import { SlPaypal } from "react-icons/sl";
 
 export default function NavBar() {
   return (
