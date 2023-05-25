@@ -124,38 +124,51 @@ export default function OneRM() {
   };
 
   return (
-    <div>
+<div className="min-h-screen flex flex-col">
       <NavBar />
-      <div className=" p-10 m-4">
-        <h1>Calculadora de 1RM</h1>
+      <div className="flex-grow flex flex-col items-center justify-center p-4 m-4">
+        <h1 className="text-6xl font-bold mb-4 font-sans">
+          Calculadora de 1RM
+        </h1>
         <form onSubmit={handleSubmit}>
-          <label>
-            Peso utilizado:
+          <label className="text-3xl font-display mb-4">
+            Peso utilizado: <br />
             <input
+            placeholder="Puede ser en kg o lb"
               type="number"
               name="weight"
               value={weight}
               onChange={handleInputChange}
+              min="0"
+              className="text-2xl"
             />
           </label>
           <br />
-          <label>
-            Repeticiones realizadas:
+          <label className="text-3xl font-display mb-4">
+            Repeticiones realizadas: <br />
             <input
+            placeholder="Debe ser al fallo"
+              className="text-2xl"
               type="number"
               name="repetitionsDone"
               value={repetitionsDone}
               onChange={handleInputChange}
+              min="0"
             />
           </label>
           <br />
-          <button type="submit">Calcular</button>
+          <button
+            type="submit"
+            className=" text-3xl bg-black hover:border-x-slate-950 hover:bg-white hover:text-black hover:border hover:border-black text-white font-bold py-4 px-6 rounded my-3"
+          >
+            Calcular 1RM
+          </button>
         </form>
         <div>
           {resultFormulas.epley !== "" && (
             <>
-              <h2>Resultados de las fórmulas</h2>
-              <ul>
+              <h2 className="text-center items-center justify-center text-4xl font-semibold ">Resultados de las fórmulas</h2>
+              <ul className="items-center justify-center text-3xl flex-wrap list-disc">
                 <li>Epley: {resultFormulas.epley}</li>
                 <li>Brzycki: {resultFormulas.brzycki}</li>
                 <li>McGlothin: {resultFormulas.mcglothin}</li>
@@ -164,15 +177,25 @@ export default function OneRM() {
                 <li>O'Conner: {resultFormulas.oconner}</li>
                 <li>Wathan: {resultFormulas.wathan}</li>
               </ul>
-              <h2>Gráfico de barras</h2>
+              <h2 className=" pt-2 text-center items-center justify-center text-4xl font-semibold ">Gráfico de barras</h2>
               <div style={{ height: "400px", width: "400px" }}>
                 <Bar data={data} />
               </div>
             </>
           )}
+          <div className=" w-8/12 m-20 block p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+            <h5 class=" text-center mb-2 text-4xl font-bold tracking-tight text-gray-900 dark:text-white">
+              Cambios futuros
+            </h5>
+            <ul className="text-xl text-gray-700 dark:text-gray-400 list-disc">
+              <li>Validación de entrada de usuario más detallada</li>
+              <li>Interfaz mas interactiva</li>
+              <li>Dar tambien un calculo de que peso utilizar con cuantas repeticiones a partir del 1RM</li>
+            </ul>
+        </div>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 }

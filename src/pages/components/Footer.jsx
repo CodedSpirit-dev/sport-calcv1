@@ -11,7 +11,7 @@ const Footer = () => (
     >
       <FaGithub size="24px" />
     </a>
-    <p className=' mx-2'>Creado con </p> <AiOutlineHeart/> <p className=' mx-2'> por tu CodedSpirit</p>
+    <p className=' mx-2'>Creado con </p> <AiOutlineHeart/> <p className=' mx-2'> por CodedSpirit</p>
     <a 
       href="https://www.linkedin.com/in/victor-verdeja-9b9710218/" 
       target="_blank" 
