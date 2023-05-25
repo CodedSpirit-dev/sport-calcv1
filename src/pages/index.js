@@ -44,7 +44,7 @@ export default function Index() {
               Cambios futuros
             </h5>
             <ul className="text-lg sm:text-xl text-gray-700 dark:text-gray-400 list-disc">
-              <li>Posibilidad de conectarse a una app movil</li>
+              <li>Posibilidad de conectarse a una app movil📲</li>
               <li>Formulario de contacto para peticiones</li>
               <li>Dar tambien un calculo de que peso utilizar con cuantas repeticiones a partir del 1RM</li>
               <li>Cambiar icono de pagina</li>
